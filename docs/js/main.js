@@ -16,6 +16,7 @@ function convertJSONtoCSV() {
   } catch (error) {
     console.log("formato incorrecto JSON");
     alert("formato incorrecto JSON");
+    return;
   }
   if (Array.isArray(json)) {
     //algoritmo
@@ -36,19 +37,10 @@ function convertJSONtoCSV() {
       values.push([...row]);
     });
     console.log(keys, values);
+    values.unshift(keys);
+    const text = values.map((v) => v.join(",")).join("\n");
+    csvForm.value = text;
   } else {
     alert("no es un arreglo de objetos");
   }
 }
-[
-  {
-    id: 0,
-    nombre: "marcos",
-    edad: 29,
-  },
-  {
-    id: 0,
-    nombre: "marcos",
-    edad: 29,
-  },
-];
